@@ -5,5 +5,5 @@
 - php/dockerfile
 - redis/dockerfile
 
- Запуск осуществляется посредством docker-compose up --build
+ Запуск осуществляется посредством файла docker-compose.yml при помощи команды "docker-compose up --build"
 Краткие комментарии приведены в файле docker-compose.yml
