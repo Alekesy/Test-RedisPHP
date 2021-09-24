@@ -1,14 +1,22 @@
-
+#скачиваем образ php
 FROM php:7.0-cli
+
+#Скачиваем расширение
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
+#Запускаем команду на установку расширения
 RUN chmod +x /usr/local/bin/install-php-extensions && \
     install-php-extensions gd xdebug
-
 RUN pecl install redis \
     && docker-php-ext-enable redis
+    
+#Копируем директорию в которой находится файл со скриптом php index.php в контейнер по пути /usr/src/myapp
 COPY . /usr/src/myapp
+
+#Переходим в данный католог , чтобы удобнее было запускат скрипты
 WORKDIR /usr/src/myapp
+
+#Запускаем сервис php и выполняем скрипт index.php
 CMD [ "php", "./index.php"]
 
 
