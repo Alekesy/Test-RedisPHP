@@ -1,6 +1,10 @@
-
+#Скачиваем образ redis
 FROM redis:3.2-alpine
+
+#копируем конфигурационный файл redis.conf . В данном случаи он пустой
 COPY redis.conf /usr/local/etc/redis/redis.conf
+
+#Запускаем сервис redis при помощи команды redis-server , указываем путь до конфиг-файла
 CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
 
 
